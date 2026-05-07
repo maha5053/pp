@@ -204,7 +204,7 @@ export function LkContestApplicationPage() {
 
         <div className="flex flex-wrap items-center gap-2 text-sm text-zinc-600">
           <Link
-            to={`/lk/contests/${mock.contestId}`}
+            to={`/conest/${mock.contestId}`}
             className="font-medium text-zinc-900 underline-offset-4 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/20"
           >
             {mock.contestTitle}

@@ -34,17 +34,10 @@ export const router = createBrowserRouter([
         element: <LkLoginPage />,
         handle: { crumb: () => ({ label: 'Войти', to: '/lk/login' }) },
       },
-      // contest details in LK: without LK tabs/layout
       {
-        path: 'lk/contests/:contestId',
+        path: 'conest/:contestId',
         element: <LkContestPage />,
-        handle: {
-          hideBreadcrumbs: true,
-          crumb: (m: any) => ({
-            label: m?.params?.contestId ?? 'Конкурс',
-            to: `/lk/contests/${m?.params?.contestId ?? ''}`,
-          }),
-        },
+        handle: { hideBreadcrumbs: true },
       },
       {
         path: 'lk',

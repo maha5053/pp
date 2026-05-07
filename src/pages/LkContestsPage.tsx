@@ -161,12 +161,12 @@ export function LkContestsPage() {
           >
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div className="min-w-0">
-              <Link
-                to={`/lk/contests/${contest.id}`}
-                className="rounded-md text-sm font-semibold text-zinc-900 underline-offset-4 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/20"
-              >
-                {contest.title}
-              </Link>
+                <Link
+                  to={`/conest/${contest.id}`}
+                  className="rounded-md text-sm font-semibold text-zinc-900 underline-offset-4 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900/20"
+                >
+                  {contest.title}
+                </Link>
                 <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-zinc-600">
                   <ProjectBadge projectId={contest.projectId} />
                   <span className="text-zinc-400">•</span>
