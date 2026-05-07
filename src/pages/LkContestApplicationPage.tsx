@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Modal } from '../components/Modal'
 import { useSession } from '../features/auth/useSession'
-import { readProfile } from '../features/profile/profile'
 import { getProjectById } from '../data/projects'
 
 const applicationImageDataUrl =
@@ -142,9 +141,6 @@ export function LkContestApplicationPage() {
   const { contestId } = useParams()
   const { session } = useSession()
   if (!session) return null
-
-  const profile = useMemo(() => readProfile(session.phone), [session.phone])
-  const fullName = profile?.fullName?.trim() || 'Участник'
 
   const mock = mocks.find((m) => m.contestId === contestId)
 
