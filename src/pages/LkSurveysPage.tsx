@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { ProjectBadge } from '../components/ProjectBadge'
 import { useSession } from '../features/auth/useSession'
 import {
@@ -9,6 +9,7 @@ import {
 export function LkSurveysPage() {
   const { session } = useSession()
   if (!session) return null
+  const [seedVersion, setSeedVersion] = useState(0)
 
   useEffect(() => {
     const existing = listSurveyHistory(session.phone)
@@ -51,10 +52,14 @@ export function LkSurveysPage() {
         completedAt: d.toISOString(),
       })
     }
+    setSeedVersion((v) => v + 1)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session.phone])
 
-  const items = useMemo(() => listSurveyHistory(session.phone), [session.phone])
+  const items = useMemo(
+    () => listSurveyHistory(session.phone),
+    [session.phone, seedVersion],
+  )
 
   return (
     <div className="space-y-4">

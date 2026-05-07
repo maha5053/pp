@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { ProjectBadge } from '../components/ProjectBadge'
 import { Link } from 'react-router-dom'
 import { useSession } from '../features/auth/useSession'
@@ -13,6 +13,7 @@ export function LkActivityPage() {
   if (!session) return null
 
   const profile = useMemo(() => readProfile(session.phone), [session.phone])
+  const [seedVersion, setSeedVersion] = useState(0)
 
   // seed a few dictation results so “many items” layout is testable
   useEffect(() => {
@@ -53,12 +54,13 @@ export function LkActivityPage() {
         certificatePngDataUrl: png,
       })
     }
+    setSeedVersion((v) => v + 1)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session.phone])
 
   const dictationResults = useMemo(
     () => listDictationResults(session.phone),
-    [session.phone],
+    [session.phone, seedVersion],
   )
 
   return (
